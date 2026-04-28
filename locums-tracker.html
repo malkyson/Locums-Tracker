@@ -15,40 +15,37 @@
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: #0a0e1a; }
   ::-webkit-scrollbar-thumb { background: #2a3050; border-radius: 2px; }
-
-  .header { background: #080c18; border-bottom: 1px solid #1e2640; padding: 16px 16px 12px; position: sticky; top: 0; z-index: 10; }
-  .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-  .logo { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: #00e5a0; letter-spacing: -0.02em; }
-  .subtitle { font-size: 10px; color: #4a5580; letter-spacing: 0.08em; }
-  .month-nav { display: flex; align-items: center; gap: 10px; }
-  .month-nav span { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; min-width: 90px; text-align: center; }
-
-  .btn-ghost { background: transparent; color: #6b7a99; border: 1px solid #1e2640; padding: 5px 10px; font-family: 'DM Mono', monospace; font-size: 12px; cursor: pointer; border-radius: 3px; }
+  .header { background: #080c18; border-bottom: 1px solid #1e2640; padding: 14px 16px 10px; position: sticky; top: 0; z-index: 10; }
+  .header-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .logo { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: #00e5a0; letter-spacing: -0.02em; }
+  .subtitle { font-size: 9px; color: #4a5580; letter-spacing: 0.08em; margin-top: 2px; }
+  .month-nav { display: flex; align-items: center; gap: 6px; }
+  .month-nav span { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; min-width: 78px; text-align: center; }
+  .btn-ghost { background: transparent; color: #6b7a99; border: 1px solid #1e2640; padding: 5px 9px; font-family: 'DM Mono', monospace; font-size: 12px; cursor: pointer; border-radius: 3px; }
   .btn-ghost:active { background: #1e2640; }
-  .btn-primary { background: #00e5a0; color: #0a0e1a; border: none; padding: 11px 0; font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; cursor: pointer; border-radius: 5px; width: 100%; letter-spacing: 0.05em; margin-top: 10px; }
+  .btn-primary { background: #00e5a0; color: #0a0e1a; border: none; padding: 11px 0; font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; cursor: pointer; border-radius: 5px; width: 100%; letter-spacing: 0.05em; margin-top: 8px; }
   .btn-primary:active { background: #00ffb3; }
-
-  .content { padding: 16px; max-width: 600px; margin: 0 auto; padding-bottom: 40px; }
-
-  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-  .stat-card { background: #0f1524; border: 1px solid #1e2640; border-radius: 8px; padding: 12px 14px; }
-  .stat-label { font-size: 9px; color: #4a5580; letter-spacing: 0.1em; margin-bottom: 6px; }
-  .stat-value { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; }
+  .btn-secondary { background: transparent; color: #6b7a99; border: 1px solid #1e2640; padding: 8px 12px; font-family: 'DM Mono', monospace; font-size: 11px; cursor: pointer; border-radius: 4px; letter-spacing: 0.05em; }
+  .btn-secondary:active { background: #1e2640; color: #e8eaf0; }
+  .icon-btn { background: transparent; border: 1px solid #1e2640; color: #6b7a99; width: 28px; height: 28px; border-radius: 4px; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .icon-btn:active { background: #1e2640; color: #e8eaf0; }
+  .content { padding: 14px; max-width: 600px; margin: 0 auto; padding-bottom: 40px; }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  .stat-card { background: #0f1524; border: 1px solid #1e2640; border-radius: 8px; padding: 11px 13px; }
+  .stat-label { font-size: 9px; color: #4a5580; letter-spacing: 0.1em; margin-bottom: 5px; }
+  .stat-value { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 800; }
   .stat-sub { font-size: 10px; color: #4a5580; margin-top: 3px; }
-
-  .card { background: #0f1524; border: 1px solid #1e2640; border-radius: 8px; margin-bottom: 14px; overflow: hidden; }
-  .card-header { padding: 12px 14px; border-bottom: 1px solid #1e2640; display: flex; justify-content: space-between; align-items: center; }
+  .card { background: #0f1524; border: 1px solid #1e2640; border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+  .card-header { padding: 11px 14px; border-bottom: 1px solid #1e2640; display: flex; justify-content: space-between; align-items: center; }
   .card-label { font-size: 10px; color: #4a5580; letter-spacing: 0.1em; }
-
   .progress-bar { height: 6px; background: #1e2640; border-radius: 3px; overflow: hidden; margin: 10px 14px; }
   .progress-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
   .progress-hint { font-size: 10px; color: #4a5580; padding: 0 14px 12px; line-height: 1.6; }
-
   .form-body { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
   .form-label { font-size: 10px; color: #4a5580; letter-spacing: 0.06em; margin-bottom: 4px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .preview-box { background: #080c18; border-radius: 4px; padding: 8px 12px; font-size: 12px; color: #00e5a0; border: 1px solid #1e2640; }
-
+  .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .preview-box { background: #080c18; border-radius: 4px; padding: 9px 12px; font-size: 12px; color: #00e5a0; border: 1px solid #1e2640; line-height: 1.5; }
   select, input[type="date"], input[type="number"] {
     background: #080c18; border: 1px solid #1e2640; color: #e8eaf0;
     font-family: 'DM Mono', monospace; font-size: 13px; padding: 9px 12px;
@@ -57,54 +54,68 @@
   }
   select:focus, input:focus { border-color: #00e5a0; }
   select option { background: #0f1524; }
+  optgroup { color: #4a5580; font-weight: 500; font-size: 11px; }
 
-  .shift-list { }
-  .shift-list-header { display: grid; grid-template-columns: 48px 1fr 80px 72px 28px; gap: 6px; padding: 8px 14px; }
+  .seg-group { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .seg-btn {
+    background: #080c18; border: 1px solid #1e2640; color: #6b7a99;
+    font-family: 'DM Mono', monospace; font-size: 11px; padding: 9px 4px;
+    border-radius: 5px; cursor: pointer; letter-spacing: 0.04em;
+    transition: all 0.1s;
+  }
+  .seg-btn.active { background: #00e5a022; border-color: #00e5a0; color: #00e5a0; }
+  .seg-btn:active { background: #1e2640; }
+  .seg-btn.active:active { background: #00e5a022; }
+
+  .shift-list-header { display: grid; grid-template-columns: 46px 1fr 78px 76px 26px; gap: 5px; padding: 8px 12px; }
   .shift-list-header span { font-size: 9px; color: #4a5580; letter-spacing: 0.08em; }
-  .shift-row { display: grid; grid-template-columns: 48px 1fr 80px 72px 28px; gap: 6px; padding: 10px 14px; border-top: 1px solid #111827; align-items: center; }
+  .shift-row { display: grid; grid-template-columns: 46px 1fr 78px 76px 26px; gap: 5px; padding: 10px 12px; border-top: 1px solid #111827; align-items: center; }
   .shift-row:active { background: #151b2e; }
   .shift-date { font-size: 11px; color: #6b7a99; }
   .shift-name { font-size: 12px; line-height: 1.3; }
-  .shift-sub { font-size: 10px; color: #4a5580; }
+  .shift-sub { font-size: 10px; color: #4a5580; margin-top: 2px; }
   .shift-net { font-size: 12px; color: #00e5a0; font-weight: 500; }
-
-  .badge { display: inline-block; padding: 3px 7px; border-radius: 3px; font-size: 9px; letter-spacing: 0.08em; font-weight: 500; cursor: pointer; border: none; font-family: 'DM Mono', monospace; }
+  .badge { display: inline-block; padding: 3px 6px; border-radius: 3px; font-size: 9px; letter-spacing: 0.06em; font-weight: 500; cursor: pointer; border: none; font-family: 'DM Mono', monospace; }
   .badge-scheduled { background: #f59e0b22; color: #f59e0b; }
   .badge-worked { background: #10b98122; color: #10b981; }
   .badge-cancelled { background: #6b728022; color: #6b7280; }
-
   .delete-btn { background: transparent; border: none; color: #2a3050; font-size: 16px; cursor: pointer; padding: 2px 4px; line-height: 1; }
   .delete-btn:active { color: #f87171; }
-
   .empty-state { padding: 32px; text-align: center; color: #4a5580; font-size: 12px; }
-
   .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #00e5a0; color: #0a0e1a; padding: 8px 18px; border-radius: 20px; font-size: 12px; font-weight: 500; opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 100; white-space: nowrap; }
   .toast.show { opacity: 1; }
-
   .cancelled-row { opacity: 0.35; }
-
   .section-divider { font-size: 9px; color: #2a3050; letter-spacing: 0.1em; padding: 6px 14px; background: #080c18; }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px; }
+  .modal-overlay.show { display: flex; }
+  .modal { background: #0f1524; border: 1px solid #2a3050; border-radius: 10px; padding: 20px; max-width: 400px; width: 100%; }
+  .modal h3 { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800; margin-bottom: 14px; letter-spacing: -0.01em; }
+  .settings-row { margin-bottom: 12px; }
+  .settings-actions { display: flex; gap: 8px; margin-top: 16px; }
+  .source-tag { display: inline-block; padding: 1px 5px; border-radius: 2px; font-size: 9px; font-weight: 500; letter-spacing: 0.05em; }
+  .src-locum { background: #a78bfa22; color: #a78bfa; }
+  .src-ft { background: #38bdf822; color: #38bdf8; }
+  .src-prod { background: #f472b622; color: #f472b6; }
+  .src-call { background: #fb923c22; color: #fb923c; }
+  .hint { font-size: 10px; color: #4a5580; margin-top: -2px; }
 </style>
 </head>
 <body>
-
 <div class="header">
   <div class="header-top">
     <div>
       <div class="logo">LOCUMS//TRACKER</div>
-      <div class="subtitle">TARGET: $10K NET/MO · 37.35% MARGINAL RATE · WA</div>
+      <div class="subtitle" id="subtitleText">TARGET: $10K NET/MO · 37.35% TAX · WA</div>
     </div>
     <div class="month-nav">
       <button class="btn-ghost" onclick="changeMonth(-1)">◀</button>
       <span id="monthLabel"></span>
       <button class="btn-ghost" onclick="changeMonth(1)">▶</button>
+      <button class="icon-btn" onclick="openSettings()" title="Settings">⚙</button>
     </div>
   </div>
 </div>
-
 <div class="content">
-
-  <!-- Stats -->
   <div class="stats-grid">
     <div class="stat-card">
       <div class="stat-label">NET WORKED</div>
@@ -127,30 +138,40 @@
       <div class="stat-sub" id="statShiftsSub">0 worked · 0 upcoming</div>
     </div>
   </div>
-
-  <!-- Progress -->
   <div class="card">
     <div class="card-header">
       <span class="card-label">MONTHLY PROGRESS</span>
-      <span id="progressPct" style="font-size:12px;color:#e8eaf0">0% of $10,000 net</span>
+      <span id="progressPct" style="font-size:11px;color:#e8eaf0">0% of $10,000</span>
     </div>
     <div class="progress-bar">
       <div class="progress-fill" id="progressFill" style="width:0%;background:#a78bfa"></div>
     </div>
     <div class="progress-hint" id="progressHint"></div>
   </div>
-
-  <!-- Add Shift -->
   <div class="card">
     <div class="card-header"><span class="card-label">ADD SHIFT</span></div>
     <div class="form-body">
       <div>
         <div class="form-label">SHIFT TYPE</div>
-        <select id="shiftType" onchange="updatePreview()">
-          <option value="night12">12hr Night/Weekend · $5,100</option>
-          <option value="day12">12hr Day · $4,850</option>
-          <option value="day10">10hr Day · $3,750</option>
-          <option value="ft_extra">FT Extra Hours · $325/hr</option>
+        <select id="shiftType" onchange="onTypeChange()">
+          <optgroup label="── Away Locums ──">
+            <option value="away_night12">Away · 12hr Night/Wknd · $5,100</option>
+            <option value="away_day12">Away · 12hr Day · $4,850</option>
+            <option value="away_day10">Away · 10hr Day · $3,750</option>
+          </optgroup>
+          <optgroup label="── FT Common Hours ──">
+            <option value="ft_common">FT Common Hours · $325/hr</option>
+          </optgroup>
+          <optgroup label="── FT Production Hours ──">
+            <option value="ft_production">FT Production · 4 units/hr × $/unit</option>
+          </optgroup>
+          <optgroup label="── FT Call Shifts ──">
+            <option value="call_or1">OR1 Call · 2.0 pts/hr</option>
+            <option value="call_or2">OR2 Call · 1.25 pts/hr</option>
+            <option value="call_or3">OR3 Call · 0.75 pts/hr</option>
+            <option value="call_or5">OR5 Call · 0.25 pts/hr</option>
+            <option value="call_or6">OR6 Call · 0.125 pts/hr</option>
+          </optgroup>
         </select>
       </div>
       <div class="form-row">
@@ -166,16 +187,44 @@
           </select>
         </div>
       </div>
-      <div id="hoursRow" style="display:none">
-        <div class="form-label">HOURS WORKED</div>
-        <input type="number" id="shiftHours" placeholder="e.g. 8" min="1" max="24" oninput="updatePreview()">
+
+      <!-- Day selector for call shifts -->
+      <div id="dayRow" style="display:none">
+        <div class="form-label">DAY</div>
+        <div class="seg-group" id="daySelector">
+          <button type="button" class="seg-btn active" data-day="weekday" onclick="setDay('weekday')">Weekday</button>
+          <button type="button" class="seg-btn" data-day="saturday" onclick="setDay('saturday')">Saturday</button>
+          <button type="button" class="seg-btn" data-day="sunday" onclick="setDay('sunday')">Sunday</button>
+        </div>
+        <div class="hint" id="dayHint" style="margin-top:6px"></div>
       </div>
+
+      <!-- Portion selector for call shifts -->
+      <div id="portionRow" style="display:none">
+        <div class="form-label">PORTION OF SHIFT</div>
+        <div class="seg-group" id="portionSelector">
+          <button type="button" class="seg-btn active" data-portion="full" onclick="setPortion('full')">Full</button>
+          <button type="button" class="seg-btn" data-portion="half" onclick="setPortion('half')">Half</button>
+          <button type="button" class="seg-btn" data-portion="custom" onclick="setPortion('custom')">Custom</button>
+        </div>
+      </div>
+
+      <!-- Hours input (used for FT common, and custom call portions) -->
+      <div id="hoursRow" style="display:none">
+        <div class="form-label" id="hoursLabel">HOURS</div>
+        <input type="number" id="shiftHours" placeholder="e.g. 8" min="0.25" max="48" step="0.25" oninput="onHoursManualInput()">
+      </div>
+
+      <!-- Units input (for production hours) -->
+      <div id="unitsRow" style="display:none">
+        <div class="form-label">UNITS EARNED</div>
+        <input type="number" id="shiftUnits" placeholder="e.g. 24" min="0" step="0.1" oninput="updatePreview()">
+      </div>
+
       <div class="preview-box" id="previewBox">Preview: select a shift type</div>
       <button class="btn-primary" onclick="addShift()">+ ADD SHIFT</button>
     </div>
   </div>
-
-  <!-- Shift Log -->
   <div class="card">
     <div class="card-header">
       <span class="card-label">SHIFT LOG</span>
@@ -186,39 +235,85 @@
     </div>
     <div id="shiftList"></div>
   </div>
-
 </div>
-
+<div class="modal-overlay" id="settingsModal">
+  <div class="modal">
+    <h3>Settings</h3>
+    <div class="settings-row">
+      <div class="form-label">UNIT VALUE ($/unit)</div>
+      <input type="number" id="unitValueInput" min="0" step="0.01" placeholder="120">
+      <div class="hint" style="margin-top:6px">Used for production hours and call shifts. Default $120.</div>
+    </div>
+    <div class="settings-row">
+      <div class="form-label">MONTHLY NET TARGET ($)</div>
+      <input type="number" id="targetInput" min="0" step="100" placeholder="10000">
+    </div>
+    <div class="settings-row">
+      <div class="form-label">MARGINAL TAX RATE (%)</div>
+      <input type="number" id="taxInput" min="0" max="100" step="0.01" placeholder="37.35">
+      <div class="hint" style="margin-top:6px">Used to estimate net from gross.</div>
+    </div>
+    <div class="settings-actions">
+      <button class="btn-secondary" onclick="closeSettings()" style="flex:1">CANCEL</button>
+      <button class="btn-primary" onclick="saveSettings()" style="margin:0;flex:1">SAVE</button>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
-
 <script>
-const TAX_RATE = 0.3735;
-const NET_TARGET = 10000;
-const GROSS_TARGET = NET_TARGET / (1 - TAX_RATE);
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const SETTINGS_KEY = "locums_settings_v2";
 
-const SHIFT_TYPES = {
-  night12: { label: "12hr Night/Wknd", hours: 12, gross: 5100, source: "LOCUM" },
-  day12:   { label: "12hr Day",        hours: 12, gross: 4850, source: "LOCUM" },
-  day10:   { label: "10hr Day",        hours: 10, gross: 3750, source: "LOCUM" },
-  ft_extra:{ label: "FT Extra",        hours: null, rate: 325, gross: null, source: "FT" },
+let settings = { unitValue: 120, netTarget: 10000, taxRate: 0.3735 };
+
+// UI state for call form
+let selectedDay = "weekday";    // weekday | saturday | sunday
+let selectedPortion = "full";   // full | half | custom
+
+function loadSettings() {
+  try {
+    const s = JSON.parse(localStorage.getItem(SETTINGS_KEY));
+    if (s) settings = { ...settings, ...s };
+  } catch {}
+}
+function saveSettingsToStorage() { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }
+
+// Standard shift hours by call type and day (null = not available that day)
+const CALL_SHIFT_HOURS = {
+  call_or1: { weekday: 14, saturday: 24, sunday: 12 },
+  call_or2: { weekday: 15, saturday: 24, sunday: 24 },
+  call_or3: { weekday: 15, saturday: 24, sunday: 24 },
+  call_or5: { weekday: null, saturday: 24, sunday: 24 },
+  call_or6: { weekday: null, saturday: 24, sunday: 24 },
 };
+
+function getShiftTypes() {
+  return {
+    away_night12: { label: "Away 12hr Night/Wknd", source: "LOCUM", srcClass: "src-locum", mode: "fixed", hours: 12, gross: 5100 },
+    away_day12:   { label: "Away 12hr Day",        source: "LOCUM", srcClass: "src-locum", mode: "fixed", hours: 12, gross: 4850 },
+    away_day10:   { label: "Away 10hr Day",        source: "LOCUM", srcClass: "src-locum", mode: "fixed", hours: 10, gross: 3750 },
+    ft_common:    { label: "FT Common Hours",      source: "FT-COMMON", srcClass: "src-ft", mode: "hourly", rate: 325 },
+    ft_production:{ label: "FT Production",        source: "FT-PROD",   srcClass: "src-prod", mode: "production_hours" },
+    call_or1:     { label: "OR1 Call",             source: "CALL",      srcClass: "src-call", mode: "call", ptsPerHr: 2.0 },
+    call_or2:     { label: "OR2 Call",             source: "CALL",      srcClass: "src-call", mode: "call", ptsPerHr: 1.25 },
+    call_or3:     { label: "OR3 Call",             source: "CALL",      srcClass: "src-call", mode: "call", ptsPerHr: 0.75 },
+    call_or5:     { label: "OR5 Call",             source: "CALL",      srcClass: "src-call", mode: "call", ptsPerHr: 0.25 },
+    call_or6:     { label: "OR6 Call",             source: "CALL",      srcClass: "src-call", mode: "call", ptsPerHr: 0.125 },
+  };
+}
 
 let currentDate = new Date();
 let currentYear = currentDate.getFullYear();
-let currentMonth = currentDate.getMonth(); // 0-indexed
+let currentMonth = currentDate.getMonth();
 
 function monthKey(y, m) { return `locums_${y}_${String(m+1).padStart(2,"0")}`; }
-function toNet(gross) { return gross * (1 - TAX_RATE); }
+function toNet(gross) { return gross * (1 - settings.taxRate); }
 function fmt(n) { return "$" + Math.round(n).toLocaleString(); }
-
 function loadShifts() {
   try { return JSON.parse(localStorage.getItem(monthKey(currentYear, currentMonth))) || []; }
   catch { return []; }
 }
-function saveShifts(shifts) {
-  localStorage.setItem(monthKey(currentYear, currentMonth), JSON.stringify(shifts));
-}
+function saveShifts(shifts) { localStorage.setItem(monthKey(currentYear, currentMonth), JSON.stringify(shifts)); }
 
 function changeMonth(delta) {
   currentMonth += delta;
@@ -234,24 +329,147 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove("show"), 2000);
 }
 
+function openSettings() {
+  document.getElementById("unitValueInput").value = settings.unitValue;
+  document.getElementById("targetInput").value = settings.netTarget;
+  document.getElementById("taxInput").value = (settings.taxRate * 100).toFixed(2);
+  document.getElementById("settingsModal").classList.add("show");
+}
+function closeSettings() { document.getElementById("settingsModal").classList.remove("show"); }
+function saveSettings() {
+  const uv = parseFloat(document.getElementById("unitValueInput").value);
+  const tg = parseFloat(document.getElementById("targetInput").value);
+  const tx = parseFloat(document.getElementById("taxInput").value);
+  if (uv > 0) settings.unitValue = uv;
+  if (tg > 0) settings.netTarget = tg;
+  if (tx >= 0 && tx < 100) settings.taxRate = tx / 100;
+  saveSettingsToStorage();
+  closeSettings();
+  showToast("Settings saved");
+  render();
+  updatePreview();
+}
+
+function setDay(day) {
+  selectedDay = day;
+  document.querySelectorAll('#daySelector .seg-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.day === day);
+  });
+  applyCallAutoFill();
+  updatePreview();
+}
+
+function setPortion(portion) {
+  selectedPortion = portion;
+  document.querySelectorAll('#portionSelector .seg-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.portion === portion);
+  });
+  applyCallAutoFill();
+  updatePreview();
+}
+
+function applyCallAutoFill() {
+  const type = document.getElementById("shiftType").value;
+  if (!type.startsWith("call_")) return;
+  const hoursInput = document.getElementById("shiftHours");
+  const stdHours = CALL_SHIFT_HOURS[type]?.[selectedDay];
+  const dayHint = document.getElementById("dayHint");
+
+  if (stdHours == null) {
+    dayHint.innerHTML = `<span style="color:#f87171">Not available on ${selectedDay}</span>`;
+    hoursInput.value = "";
+    hoursInput.disabled = (selectedPortion !== "custom");
+    return;
+  }
+  hoursInput.disabled = false;
+  dayHint.textContent = `Standard ${selectedDay} shift: ${stdHours} hours`;
+
+  if (selectedPortion === "full") hoursInput.value = stdHours;
+  else if (selectedPortion === "half") hoursInput.value = (stdHours / 2);
+  // custom: leave as-is for user to edit
+}
+
+function onHoursManualInput() {
+  // If user types directly, switch portion to custom (only for call shifts)
+  const type = document.getElementById("shiftType").value;
+  if (type.startsWith("call_") && selectedPortion !== "custom") {
+    selectedPortion = "custom";
+    document.querySelectorAll('#portionSelector .seg-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.portion === "custom");
+    });
+  }
+  updatePreview();
+}
+
+function onTypeChange() {
+  const type = document.getElementById("shiftType").value;
+  const t = getShiftTypes()[type];
+  const hoursRow = document.getElementById("hoursRow");
+  const unitsRow = document.getElementById("unitsRow");
+  const dayRow = document.getElementById("dayRow");
+  const portionRow = document.getElementById("portionRow");
+  const hoursLabel = document.getElementById("hoursLabel");
+
+  hoursRow.style.display = "none";
+  unitsRow.style.display = "none";
+  dayRow.style.display = "none";
+  portionRow.style.display = "none";
+  document.getElementById("shiftHours").disabled = false;
+
+  if (t.mode === "hourly") {
+    hoursRow.style.display = "block";
+    hoursLabel.textContent = "HOURS WORKED";
+  } else if (t.mode === "production_hours") {
+    hoursRow.style.display = "block";
+    hoursLabel.textContent = "PRODUCTION HOURS WORKED";
+  } else if (t.mode === "call") {
+    dayRow.style.display = "block";
+    portionRow.style.display = "block";
+    hoursRow.style.display = "block";
+    hoursLabel.textContent = "CALL HOURS WORKED";
+    applyCallAutoFill();
+  }
+  updatePreview();
+}
+
+function calcGross(type, hours, units) {
+  const t = getShiftTypes()[type];
+  if (!t) return 0;
+  if (t.mode === "fixed")  return t.gross;
+  if (t.mode === "hourly") return (hours || 0) * t.rate;
+  if (t.mode === "production_hours") return (hours || 0) * 4 * settings.unitValue;
+  if (t.mode === "call")   return (hours || 0) * t.ptsPerHr * settings.unitValue;
+  return 0;
+}
+
 function updatePreview() {
   const type = document.getElementById("shiftType").value;
-  const t = SHIFT_TYPES[type];
-  const hoursRow = document.getElementById("hoursRow");
+  const t = getShiftTypes()[type];
   const preview = document.getElementById("previewBox");
-
-  if (type === "ft_extra") {
-    hoursRow.style.display = "block";
-    const hrs = parseFloat(document.getElementById("shiftHours").value) || 0;
-    if (hrs > 0) {
-      const g = hrs * 325;
-      preview.textContent = `${hrs}h × $325 = ${fmt(g)} gross → +${fmt(toNet(g))} net`;
-    } else {
-      preview.textContent = "Enter hours to see preview";
-    }
-  } else {
-    hoursRow.style.display = "none";
-    preview.textContent = `${fmt(t.gross)} gross → +${fmt(toNet(t.gross))} net`;
+  const hours = parseFloat(document.getElementById("shiftHours").value) || 0;
+  const units = parseFloat(document.getElementById("shiftUnits").value) || 0;
+  if (t.mode === "fixed") {
+    preview.innerHTML = `${fmt(t.gross)} gross → <b>+${fmt(toNet(t.gross))} net</b>`;
+  } else if (t.mode === "hourly") {
+    if (hours > 0) {
+      const g = hours * t.rate;
+      preview.innerHTML = `${hours}h × $${t.rate} = ${fmt(g)} → <b>+${fmt(toNet(g))} net</b>`;
+    } else { preview.textContent = "Enter hours"; }
+  } else if (t.mode === "production_hours") {
+    if (hours > 0) {
+      const totalUnits = hours * 4;
+      const g = totalUnits * settings.unitValue;
+      preview.innerHTML = `${hours}h × 4 units/hr = ${totalUnits} units<br>${totalUnits} × $${settings.unitValue} = ${fmt(g)} → <b>+${fmt(toNet(g))} net</b>`;
+    } else { preview.textContent = `Enter hours (4 units/hr × $${settings.unitValue})`; }
+  } else if (t.mode === "call") {
+    if (hours > 0) {
+      const totalUnits = hours * t.ptsPerHr;
+      const g = totalUnits * settings.unitValue;
+      const stdHours = CALL_SHIFT_HOURS[type]?.[selectedDay];
+      const fraction = stdHours ? (hours / stdHours) : null;
+      const fracText = fraction ? ` (${(fraction*100).toFixed(0)}% of ${selectedDay} shift)` : "";
+      preview.innerHTML = `${hours}h × ${t.ptsPerHr} pts/hr = ${totalUnits.toFixed(2)} units${fracText}<br>${totalUnits.toFixed(2)} × $${settings.unitValue} = ${fmt(g)} → <b>+${fmt(toNet(g))} net</b>`;
+    } else { preview.textContent = `Pick day and portion to preview`; }
   }
 }
 
@@ -259,32 +477,36 @@ function addShift() {
   const type = document.getElementById("shiftType").value;
   const date = document.getElementById("shiftDate").value;
   const status = document.getElementById("shiftStatus").value;
-  const t = SHIFT_TYPES[type];
-
-  if (!date) { showToast("Pick a date first"); return; }
-
-  let hours = t.hours;
-  let gross = t.gross;
-
-  if (type === "ft_extra") {
+  const t = getShiftTypes()[type];
+  if (!date) { showToast("Pick a date"); return; }
+  let hours = 0, units = 0, callDay = null, callPortion = null;
+  if (t.mode === "fixed") { hours = t.hours; }
+  else if (t.mode === "hourly" || t.mode === "call" || t.mode === "production_hours") {
     hours = parseFloat(document.getElementById("shiftHours").value);
     if (!hours || hours <= 0) { showToast("Enter hours"); return; }
-    gross = hours * 325;
+    if (t.mode === "call") {
+      units = hours * t.ptsPerHr;
+      callDay = selectedDay;
+      callPortion = selectedPortion;
+    } else if (t.mode === "production_hours") {
+      units = hours * 4;
+    }
   }
-
+  const gross = calcGross(type, hours, units);
   const shift = {
-    id: Date.now(),
-    type, label: t.label, source: t.source,
-    date, status, hours, gross, net: toNet(gross),
+    id: Date.now(), type, label: t.label, source: t.source, srcClass: t.srcClass,
+    mode: t.mode, date, status, hours, units, gross,
+    callDay, callPortion,
+    unitValueAtTime: settings.unitValue,
   };
-
   const shifts = loadShifts();
   shifts.push(shift);
   shifts.sort((a,b) => a.date.localeCompare(b.date));
   saveShifts(shifts);
-
-  // Reset hours
   document.getElementById("shiftHours").value = "";
+  document.getElementById("shiftUnits").value = "";
+  // Reset portion to full for next entry
+  setPortion("full");
   updatePreview();
   showToast("Shift added ✓");
   render();
@@ -299,7 +521,6 @@ function cycleStatus(id) {
   saveShifts(shifts);
   render();
 }
-
 function deleteShift(id) {
   const shifts = loadShifts().filter(s => s.id !== id);
   saveShifts(shifts);
@@ -307,24 +528,40 @@ function deleteShift(id) {
   render();
 }
 
-function render() {
-  // Month label
-  document.getElementById("monthLabel").textContent = `${MONTHS[currentMonth]} ${currentYear}`;
+function effectiveGross(s) {
+  if (s.mode === "fixed" || s.mode === "hourly") return s.gross;
+  if (s.mode === "production_hours") return (s.hours || 0) * 4 * settings.unitValue;
+  if (s.mode === "call")  return (s.hours || 0) * (getShiftTypes()[s.type] && getShiftTypes()[s.type].ptsPerHr || 0) * settings.unitValue;
+  return s.gross || 0;
+}
 
+function shiftSubText(s) {
+  const t = getShiftTypes()[s.type];
+  if (s.mode === "fixed") return s.source;
+  if (s.mode === "hourly") return `${s.source} · ${s.hours}h`;
+  if (s.mode === "production_hours") return `${s.source} · ${s.hours}h (${s.hours*4}u)`;
+  if (s.mode === "call") {
+    const dayShort = s.callDay ? s.callDay.slice(0,3) : "";
+    return `${s.source} · ${s.hours}h ${dayShort}`;
+  }
+  return s.source;
+}
+
+function render() {
+  document.getElementById("monthLabel").textContent = `${MONTHS[currentMonth]} ${currentYear}`;
+  document.getElementById("subtitleText").textContent =
+    `TARGET: $${(settings.netTarget/1000).toFixed(0)}K NET · ${(settings.taxRate*100).toFixed(1)}% TAX · $${settings.unitValue}/UNIT`;
   const shifts = loadShifts();
   const active = shifts.filter(s => s.status !== "cancelled");
   const worked = shifts.filter(s => s.status === "worked");
   const scheduled = shifts.filter(s => s.status === "scheduled");
-
-  const grossWorked = worked.reduce((a,s) => a + s.gross, 0);
-  const grossTotal  = active.reduce((a,s) => a + s.gross, 0);
+  const grossWorked = worked.reduce((a,s) => a + effectiveGross(s), 0);
+  const grossTotal  = active.reduce((a,s) => a + effectiveGross(s), 0);
   const netWorked   = toNet(grossWorked);
   const netTotal    = toNet(grossTotal);
-  const remaining   = Math.max(0, NET_TARGET - netTotal);
-  const remainGross = remaining / (1 - TAX_RATE);
-  const pct         = Math.min(100, (netTotal / NET_TARGET) * 100);
-
-  // Stats
+  const remaining   = Math.max(0, settings.netTarget - netTotal);
+  const remainGross = remaining / (1 - settings.taxRate);
+  const pct         = Math.min(100, (netTotal / settings.netTarget) * 100);
   document.getElementById("statWorked").textContent = fmt(netWorked);
   document.getElementById("statWorkedSub").textContent = fmt(grossWorked) + " gross";
   document.getElementById("statProjected").textContent = fmt(netTotal);
@@ -334,37 +571,30 @@ function render() {
   document.getElementById("statNeededSub").textContent = remaining > 0 ? fmt(remainGross) + " gross" : "target met";
   document.getElementById("statShifts").textContent = active.length;
   document.getElementById("statShiftsSub").textContent = `${worked.length} worked · ${scheduled.length} upcoming`;
-
-  // Progress
-  document.getElementById("progressPct").textContent = `${Math.round(pct)}% of $10,000 net`;
+  document.getElementById("progressPct").textContent = `${Math.round(pct)}% of ${fmt(settings.netTarget)}`;
   const fill = document.getElementById("progressFill");
   fill.style.width = pct + "%";
   fill.style.background = pct >= 100 ? "#00e5a0" : pct >= 70 ? "#f59e0b" : "#a78bfa";
-
   if (remaining > 0) {
+    const ftHrs = Math.round(remainGross / 325);
+    const or2Hrs = (remainGross / (1.25 * settings.unitValue)).toFixed(1);
+    const nightShifts = Math.ceil(remainGross / 5100);
     document.getElementById("progressHint").innerHTML =
-      `Quickest close: &nbsp;<b style="color:#e8eaf0">${Math.ceil(remainGross/5100)}</b> night/wknd shift${Math.ceil(remainGross/5100)!==1?'s':''} &nbsp;|&nbsp; ` +
-      `<b style="color:#e8eaf0">${Math.ceil(remainGross/4850)}</b> day 12hr &nbsp;|&nbsp; ` +
-      `<b style="color:#e8eaf0">${Math.round(remainGross/325)}</b> FT hrs`;
+      `Quickest close: &nbsp;<b style="color:#e8eaf0">${nightShifts}</b> away night/wknd &nbsp;|&nbsp; ` +
+      `<b style="color:#e8eaf0">${ftHrs}</b> FT common hrs &nbsp;|&nbsp; ` +
+      `<b style="color:#e8eaf0">${or2Hrs}</b> OR2 call hrs`;
   } else {
     document.getElementById("progressHint").innerHTML = `<span style="color:#00e5a0">Monthly target reached 🎯</span>`;
   }
-
-  // Shift count
   document.getElementById("shiftCount").textContent = shifts.length + " entr" + (shifts.length === 1 ? "y" : "ies");
-
-  // Shift list
   const list = document.getElementById("shiftList");
   if (shifts.length === 0) {
     list.innerHTML = `<div class="empty-state">No shifts logged for ${MONTHS[currentMonth]} ${currentYear}</div>`;
     return;
   }
-
-  // Group by status for display order: worked, scheduled, cancelled
   const order = ["worked","scheduled","cancelled"];
   const grouped = {};
   order.forEach(s => grouped[s] = shifts.filter(x => x.status === s));
-
   let html = "";
   order.forEach(status => {
     if (grouped[status].length === 0) return;
@@ -372,18 +602,17 @@ function render() {
     html += `<div class="section-divider">${labels[status]}</div>`;
     grouped[status].forEach(s => {
       const dateStr = s.date.slice(5);
-      const badgeClass = `badge badge-${s.status}`;
       const badgeLabel = { scheduled:"Scheduled", worked:"Worked", cancelled:"Cancelled" }[s.status];
-      const srcColor = s.source === "LOCUM" ? "color:#a78bfa" : "color:#38bdf8";
+      const netVal = toNet(effectiveGross(s));
       html += `
         <div class="shift-row ${s.status === 'cancelled' ? 'cancelled-row' : ''}">
           <div class="shift-date">${dateStr}</div>
           <div>
             <div class="shift-name">${s.label}</div>
-            <div class="shift-sub" style="${srcColor}">${s.source}${s.type==='ft_extra'?' · '+s.hours+'h':''}</div>
+            <div class="shift-sub"><span class="source-tag ${s.srcClass||'src-locum'}">${shiftSubText(s)}</span></div>
           </div>
-          <div><button class="${badgeClass}" onclick="cycleStatus(${s.id})">${badgeLabel}</button></div>
-          <div class="shift-net">${s.status!=='cancelled'?'+'+fmt(s.net):'—'}</div>
+          <div><button class="badge badge-${s.status}" onclick="cycleStatus(${s.id})">${badgeLabel}</button></div>
+          <div class="shift-net">${s.status!=='cancelled'?'+'+fmt(netVal):'—'}</div>
           <button class="delete-btn" onclick="deleteShift(${s.id})">×</button>
         </div>`;
     });
@@ -391,9 +620,9 @@ function render() {
   list.innerHTML = html;
 }
 
-// Set today's date as default
+loadSettings();
 document.getElementById("shiftDate").value = new Date().toISOString().split("T")[0];
-updatePreview();
+onTypeChange();
 render();
 </script>
 </body>
