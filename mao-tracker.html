@@ -82,11 +82,21 @@
       return d ? new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "";
     }
 
+    function parseTime(t) {
+      if (!t) return null;
+      const clean = t.replace(":", "").trim();
+      if (clean.length < 3) return null;
+      const h = parseInt(clean.slice(0, -2));
+      const m = parseInt(clean.slice(-2));
+      if (isNaN(h) || isNaN(m)) return null;
+      return h * 60 + m;
+    }
+
     function calcMaintenanceUnits(start, end) {
-      if (!start || !end) return 0;
-      const [sh, sm] = start.split(":").map(Number);
-      const [eh, em] = end.split(":").map(Number);
-      let totalMins = (eh * 60 + em) - (sh * 60 + sm);
+      const s = parseTime(start);
+      const e = parseTime(end);
+      if (s === null || e === null) return 0;
+      let totalMins = e - s;
       if (totalMins < 0) totalMins += 24 * 60;
       return Math.floor(totalMins / 15);
     }
@@ -155,7 +165,7 @@
     }
 
     function entryLabel(e) {
-      if (e.type === "case") return `Case: ${e.caseStarts} start${e.caseStarts !== 1 ? "s" : ""}, ${e.maintenanceUnits} maint. units`;
+      if (e.type === "case") return `Case: ${e.caseStarts} start${e.caseStarts !== 1 ? "s" : ""}, ${e.maintenanceUnits} maint. units${e.patientInitials ? " — " + e.patientInitials : ""}`;
       if (e.type === "procedure") { const p = [...PROCEDURES, ...CONSULTS].find(x => x.id === e.procedureId); return `${p?.label || e.procedureId} ×${e.qty}`; }
       if (e.type === "standby") { const s = STANDBY.find(x => x.id === e.standbyId); return `${s?.label || e.standbyId} ×${e.qty}`; }
       if (e.type === "assist") return `OR Assist ×${e.qty}`;
@@ -177,6 +187,7 @@
 
       const [caseDate, setCaseDate] = useState(today.toISOString().slice(0, 10));
       const [caseStarts, setCaseStarts] = useState(1);
+      const [patientInitials, setPatientInitials] = useState("");
       const [anesStart, setAnesStart] = useState("");
       const [anesEnd, setAnesEnd] = useState("");
       const [aline, setAline] = useState(false);
@@ -228,8 +239,8 @@
 
       function submitCase() {
         const maintenanceUnits = calcMaintenanceUnits(anesStart, anesEnd);
-        addEntry({ id: Date.now().toString(), type: "case", date: caseDate, caseStarts: parseInt(caseStarts)||0, maintenanceUnits, anesStart, anesEnd, aline, centralLine, pacu15min: parseInt(pacu15min)||0, rounding: parseInt(rounding)||0 });
-        setCaseStarts(1); setAnesStart(""); setAnesEnd(""); setAline(false); setCentralLine(false); setPacu15min(0); setRounding(0);
+        addEntry({ id: Date.now().toString(), type: "case", date: caseDate, patientInitials, caseStarts: parseInt(caseStarts)||0, maintenanceUnits, anesStart, anesEnd, aline, centralLine, pacu15min: parseInt(pacu15min)||0, rounding: parseInt(rounding)||0 });
+        setCaseStarts(1); setPatientInitials(""); setAnesStart(""); setAnesEnd(""); setAline(false); setCentralLine(false); setPacu15min(0); setRounding(0);
       }
 
       function submitProcedure() {
@@ -343,6 +354,10 @@
                     <label style={S.label}>Date</label>
                     <input type="date" style={S.input} value={caseDate} onChange={e=>setCaseDate(e.target.value)} />
                   </div>
+                  <div style={{marginBottom:12}}>
+                    <label style={S.label}>Patient Initials</label>
+                    <input type="text" style={S.input} value={patientInitials} onChange={e=>setPatientInitials(e.target.value.toUpperCase())} placeholder="e.g. J.S." maxLength={10} />
+                  </div>
                   <div style={S.row}>
                     <div style={S.col}>
                       <label style={S.label}>Case Starts</label>
@@ -352,11 +367,11 @@
                   <div style={S.row}>
                     <div style={S.col}>
                       <label style={S.label}>Anes Start</label>
-                      <input type="time" style={S.input} value={anesStart} onChange={e=>setAnesStart(e.target.value)} />
+                      <input type="text" inputMode="numeric" style={S.input} value={anesStart} onChange={e=>setAnesStart(e.target.value)} placeholder="0730" maxLength={5} />
                     </div>
                     <div style={S.col}>
                       <label style={S.label}>Anes End</label>
-                      <input type="time" style={S.input} value={anesEnd} onChange={e=>setAnesEnd(e.target.value)} />
+                      <input type="text" inputMode="numeric" style={S.input} value={anesEnd} onChange={e=>setAnesEnd(e.target.value)} placeholder="0930" maxLength={5} />
                     </div>
                   </div>
                   {anesStart && anesEnd && (
