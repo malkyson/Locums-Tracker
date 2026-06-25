@@ -165,7 +165,7 @@
     }
 
     function entryLabel(e) {
-      if (e.type === "case") return `Case: ${e.caseStarts} start${e.caseStarts !== 1 ? "s" : ""}, ${(+e.maintenanceUnits).toFixed(2)} maint. units`;
+      if (e.type === "case") return `Case: ${e.caseStarts} start${e.caseStarts !== 1 ? "s" : ""}, ${(+e.maintenanceUnits).toFixed(2)} maint. units${e.patientInitials ? " — " + e.patientInitials : ""}`;
       if (e.type === "procedure") { const p = [...PROCEDURES, ...CONSULTS].find(x => x.id === e.procedureId); return `${p?.label || e.procedureId} ×${e.qty}`; }
       if (e.type === "standby") { const s = STANDBY.find(x => x.id === e.standbyId); return `${s?.label || e.standbyId} ×${e.qty}`; }
       if (e.type === "assist") return `OR Assist ×${e.qty}`;
@@ -187,6 +187,7 @@
 
       const [caseDate, setCaseDate] = useState(today.toISOString().slice(0, 10));
       const [caseStarts, setCaseStarts] = useState(1);
+      const [patientInitials, setPatientInitials] = useState("");
       const [anesStart, setAnesStart] = useState("");
       const [anesEnd, setAnesEnd] = useState("");
       const [aline, setAline] = useState(false);
@@ -220,11 +221,19 @@
       }
 
       function exportCSV() {
-        const rows = [["Date","Type","Description","Points"]];
+        const rows = [["Date","Type","Patient Initials","Anes Start","Anes End","Description","Points"]];
         [...filtered].sort((a,b)=>a.date.localeCompare(b.date)).forEach(e => {
-          rows.push([e.date, e.type, entryLabel(e), entryPts(e).toFixed(2)]);
+          rows.push([
+            e.date,
+            e.type,
+            e.type === "case" ? (e.patientInitials || "") : "",
+            e.type === "case" ? (e.anesStart || "") : "",
+            e.type === "case" ? (e.anesEnd || "") : "",
+            entryLabel(e),
+            entryPts(e).toFixed(2)
+          ]);
         });
-        rows.push(["","","TOTAL", monthTotal.toFixed(2)]);
+        rows.push(["","","","","","TOTAL", monthTotal.toFixed(2)]);
         const csv = rows.map(r => r.map(c => `"${c}"`).join(",")).join("\n");
         const blob = new Blob([csv], { type: "text/csv" });
         const url = URL.createObjectURL(blob);
@@ -254,8 +263,8 @@
 
       function submitCase() {
         const maintenanceUnits = calcMaintenanceUnits(anesStart, anesEnd);
-        addEntry({ id: Date.now().toString(), type: "case", date: caseDate, caseStarts: parseInt(caseStarts)||0, maintenanceUnits, anesStart, anesEnd, aline, centralLine, pacu15min: parseFloat(pacu15min)||0, rounding: parseInt(rounding)||0 });
-        setCaseStarts(1); setAnesStart(""); setAnesEnd(""); setAline(false); setCentralLine(false); setPacu15min(0); setRounding(0);
+        addEntry({ id: Date.now().toString(), type: "case", date: caseDate, patientInitials, caseStarts: parseInt(caseStarts)||0, maintenanceUnits, anesStart, anesEnd, aline, centralLine, pacu15min: parseFloat(pacu15min)||0, rounding: parseInt(rounding)||0 });
+        setCaseStarts(1); setPatientInitials(""); setAnesStart(""); setAnesEnd(""); setAline(false); setCentralLine(false); setPacu15min(0); setRounding(0);
       }
 
       function submitProcedure() {
@@ -368,6 +377,10 @@
                   <div style={{marginBottom:12}}>
                     <label style={S.label}>Date</label>
                     <input type="date" style={S.input} value={caseDate} onChange={e=>setCaseDate(e.target.value)} />
+                  </div>
+                  <div style={{marginBottom:12}}>
+                    <label style={S.label}>Patient Initials</label>
+                    <input type="text" style={S.input} value={patientInitials} onChange={e=>setPatientInitials(e.target.value.toUpperCase())} placeholder="e.g. J.S." maxLength={10} />
                   </div>
                   <div style={S.row}>
                     <div style={S.col}>
