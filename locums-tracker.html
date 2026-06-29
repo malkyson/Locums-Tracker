@@ -160,7 +160,10 @@
             <option value="away_day10">Away · 10hr Day · $3,750</option>
           </optgroup>
           <optgroup label="── FT Common Hours ──">
-            <option value="ft_common">FT Common Hours · $325/hr</option>
+            <option value="ft_common">FT Common Hours · $315/hr</option>
+          </optgroup>
+          <optgroup label="── FT THINK Fertility ──">
+            <option value="think_fertility">THINK Fertility · $700/case</option>
           </optgroup>
           <optgroup label="── FT Production Hours ──">
             <option value="ft_production">FT Production · 4 units/hr × $/unit</option>
@@ -220,6 +223,10 @@
         <div class="form-label">UNITS EARNED</div>
         <input type="number" id="shiftUnits" placeholder="e.g. 24" min="0" step="0.1" oninput="updatePreview()">
       </div>
+      <div id="casesRow" style="display:none">
+        <div class="form-label">NUMBER OF CASES</div>
+        <input type="number" id="shiftCases" placeholder="e.g. 3" min="1" step="1" oninput="updatePreview()">
+      </div>
 
       <div class="preview-box" id="previewBox">Preview: select a shift type</div>
       <button class="btn-primary" onclick="addShift()">+ ADD SHIFT</button>
@@ -241,7 +248,7 @@
     <h3>Settings</h3>
     <div class="settings-row">
       <div class="form-label">UNIT VALUE ($/unit)</div>
-      <input type="number" id="unitValueInput" min="0" step="0.01" placeholder="120">
+      <input type="number" id="unitValueInput" min="0" step="0.01" placeholder="130">
       <div class="hint" style="margin-top:6px">Used for production hours and call shifts. Default $120.</div>
     </div>
     <div class="settings-row">
@@ -264,7 +271,7 @@
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const SETTINGS_KEY = "locums_settings_v2";
 
-let settings = { unitValue: 120, netTarget: 10000, taxRate: 0.3735 };
+let settings = { unitValue: 130, netTarget: 10000, taxRate: 0.3735 };
 
 // UI state for call form
 let selectedDay = "weekday";    // weekday | saturday | sunday
@@ -292,8 +299,9 @@ function getShiftTypes() {
     away_night12: { label: "Away 12hr Night/Wknd", source: "LOCUM", srcClass: "src-locum", mode: "fixed", hours: 12, gross: 5100 },
     away_day12:   { label: "Away 12hr Day",        source: "LOCUM", srcClass: "src-locum", mode: "fixed", hours: 12, gross: 4850 },
     away_day10:   { label: "Away 10hr Day",        source: "LOCUM", srcClass: "src-locum", mode: "fixed", hours: 10, gross: 3750 },
-    ft_common:    { label: "FT Common Hours",      source: "FT-COMMON", srcClass: "src-ft", mode: "hourly", rate: 325 },
+    ft_common:    { label: "FT Common Hours",      source: "FT-COMMON", srcClass: "src-ft", mode: "hourly", rate: 315 },
     ft_production:{ label: "FT Production",        source: "FT-PROD",   srcClass: "src-prod", mode: "production_hours" },
+    think_fertility:{ label: "THINK Fertility",      source: "THINK",     srcClass: "src-ft",   mode: "cases", ratePerCase: 700 },
     call_or1:     { label: "OR1 Call",             source: "CALL",      srcClass: "src-call", mode: "call", ptsPerHr: 2.0 },
     call_or2:     { label: "OR2 Call",             source: "CALL",      srcClass: "src-call", mode: "call", ptsPerHr: 1.25 },
     call_or3:     { label: "OR3 Call",             source: "CALL",      srcClass: "src-call", mode: "call", ptsPerHr: 0.75 },
@@ -414,6 +422,7 @@ function onTypeChange() {
   unitsRow.style.display = "none";
   dayRow.style.display = "none";
   portionRow.style.display = "none";
+  document.getElementById("casesRow").style.display = "none";
   document.getElementById("shiftHours").disabled = false;
 
   if (t.mode === "hourly") {
@@ -422,6 +431,8 @@ function onTypeChange() {
   } else if (t.mode === "production_hours") {
     hoursRow.style.display = "block";
     hoursLabel.textContent = "PRODUCTION HOURS WORKED";
+  } else if (t.mode === "cases") {
+    document.getElementById("casesRow").style.display = "block";
   } else if (t.mode === "call") {
     dayRow.style.display = "block";
     portionRow.style.display = "block";
@@ -438,6 +449,7 @@ function calcGross(type, hours, units) {
   if (t.mode === "fixed")  return t.gross;
   if (t.mode === "hourly") return (hours || 0) * t.rate;
   if (t.mode === "production_hours") return (hours || 0) * 4 * settings.unitValue;
+  if (t.mode === "cases") return (units || 0) * (t.ratePerCase || 0);
   if (t.mode === "call")   return (hours || 0) * t.ptsPerHr * settings.unitValue;
   return 0;
 }
@@ -461,6 +473,12 @@ function updatePreview() {
       const g = totalUnits * settings.unitValue;
       preview.innerHTML = `${hours}h × 4 units/hr = ${totalUnits} units<br>${totalUnits} × $${settings.unitValue} = ${fmt(g)} → <b>+${fmt(toNet(g))} net</b>`;
     } else { preview.textContent = `Enter hours (4 units/hr × $${settings.unitValue})`; }
+  } else if (t.mode === "cases") {
+    const cases = parseInt(document.getElementById("shiftCases").value) || 0;
+    if (cases > 0) {
+      const g = cases * t.ratePerCase;
+      preview.innerHTML = `${cases} case${cases!==1?"s":""} × $${t.ratePerCase} = ${fmt(g)} → <b>+${fmt(toNet(g))} net</b>`;
+    } else { preview.textContent = `Enter number of cases (× $${t.ratePerCase}/case)`; }
   } else if (t.mode === "call") {
     if (hours > 0) {
       const totalUnits = hours * t.ptsPerHr;
@@ -491,6 +509,9 @@ function addShift() {
     } else if (t.mode === "production_hours") {
       units = hours * 4;
     }
+  } else if (t.mode === "cases") {
+    units = parseInt(document.getElementById("shiftCases").value);
+    if (!units || units <= 0) { showToast("Enter case count"); return; }
   }
   const gross = calcGross(type, hours, units);
   const shift = {
@@ -505,6 +526,7 @@ function addShift() {
   saveShifts(shifts);
   document.getElementById("shiftHours").value = "";
   document.getElementById("shiftUnits").value = "";
+  document.getElementById("shiftCases").value = "";
   // Reset portion to full for next entry
   setPortion("full");
   updatePreview();
@@ -531,6 +553,7 @@ function deleteShift(id) {
 function effectiveGross(s) {
   if (s.mode === "fixed" || s.mode === "hourly") return s.gross;
   if (s.mode === "production_hours") return (s.hours || 0) * 4 * settings.unitValue;
+  if (s.mode === "cases") return s.gross; // fixed rate per case, no recalc needed
   if (s.mode === "call")  return (s.hours || 0) * (getShiftTypes()[s.type] && getShiftTypes()[s.type].ptsPerHr || 0) * settings.unitValue;
   return s.gross || 0;
 }
@@ -540,6 +563,7 @@ function shiftSubText(s) {
   if (s.mode === "fixed") return s.source;
   if (s.mode === "hourly") return `${s.source} · ${s.hours}h`;
   if (s.mode === "production_hours") return `${s.source} · ${s.hours}h (${s.hours*4}u)`;
+  if (s.mode === "cases") return `${s.source} · ${s.units} case${s.units!==1?"s":""}`;
   if (s.mode === "call") {
     const dayShort = s.callDay ? s.callDay.slice(0,3) : "";
     return `${s.source} · ${s.hours}h ${dayShort}`;
@@ -576,7 +600,7 @@ function render() {
   fill.style.width = pct + "%";
   fill.style.background = pct >= 100 ? "#00e5a0" : pct >= 70 ? "#f59e0b" : "#a78bfa";
   if (remaining > 0) {
-    const ftHrs = Math.round(remainGross / 325);
+    const ftHrs = Math.round(remainGross / 315);
     const or2Hrs = (remainGross / (1.25 * settings.unitValue)).toFixed(1);
     const nightShifts = Math.ceil(remainGross / 5100);
     document.getElementById("progressHint").innerHTML =
